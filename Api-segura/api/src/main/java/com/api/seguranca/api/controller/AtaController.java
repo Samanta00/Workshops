@@ -9,6 +9,13 @@ import com.api.seguranca.api.repository.ColaboradorRepository;
 import com.api.seguranca.api.model.AtaEntity;
 import com.api.seguranca.api.model.ColaboradorEntity;
 import com.api.seguranca.api.model.WorkshopEntity;
+import java.util.List;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+import com.api.seguranca.api.dto.ColaboradorResponse;
+
+
+
 
 
 @RestController
@@ -34,6 +41,49 @@ public class AtaController {
 
         return ataRepository.save(ata);
     }
+
+        private List<ColaboradorResponse> mapearAtas(List<AtaEntity> atas) {
+        return atas.stream()
+            .flatMap(ata ->
+                ata.getColaboradores().stream()
+                    .map(colaborador ->
+                        new ColaboradorResponse(
+                            colaborador.getId(),
+                            colaborador.getNome(),
+                            ata.getWorkshop().getNome(),
+                            ata.getWorkshop().getDataRealizacao()
+                        )
+                    )
+            )
+            .sorted((a, b) -> a.getNomeColaborador()
+                .compareToIgnoreCase(b.getNomeColaborador()))
+            .toList();
+    }
+
+    private List<ColaboradorResponse> mapearColaboradoresOrdenados() {
+        List<AtaEntity> atas = ataRepository.findAll();
+        return mapearAtas(atas);
+    }
+
+
+    @GetMapping
+    public List<ColaboradorResponse> listarAtas(
+            @RequestParam(required = false) String workshopNome,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data
+    ) {
+
+        if (workshopNome != null) {
+            return mapearAtas(ataRepository.findByWorkshopNome(workshopNome));
+        }
+
+        if (data != null) {
+            return mapearAtas(ataRepository.findByWorkshopData(data));
+        }
+
+        return mapearColaboradoresOrdenados();
+    }
+
 
     @PutMapping("/{ataId}/colaboradores/{colaboradorId}")
     public AtaEntity adicionarColaborador(

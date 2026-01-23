@@ -1,18 +1,7 @@
 package com.api.seguranca.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import com.api.seguranca.api.model.ColaboradorEntity;
-import com.api.seguranca.api.model.WorkshopEntity;
-
-
+import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +10,10 @@ public class AtaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "workshop_id", nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "workshop_id")
     private WorkshopEntity workshop;
 
     @ManyToMany
@@ -33,21 +22,20 @@ public class AtaEntity {
         joinColumns = @JoinColumn(name = "ata_id"),
         inverseJoinColumns = @JoinColumn(name = "colaborador_id")
     )
-    private List<ColaboradorEntity> colaboradores;
+    private List<ColaboradorEntity> colaboradores = new ArrayList<>();
 
     public AtaEntity() {
     }
 
-    public AtaEntity(WorkshopEntity workshop, List<ColaboradorEntity> colaboradores) {
+    public AtaEntity(WorkshopEntity workshop) {
         this.workshop = workshop;
-        this.colaboradores = colaboradores;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
