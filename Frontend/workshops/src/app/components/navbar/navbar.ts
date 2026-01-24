@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
-  standalone: true, 
-  imports: [RouterModule] 
+  styleUrls: ['./navbar.css'], 
+  standalone: true,
+  imports: [RouterModule]
 })
-export class Navbar {
+export class Navbar {}
 
-}
