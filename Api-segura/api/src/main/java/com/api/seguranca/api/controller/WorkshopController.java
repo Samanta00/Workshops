@@ -11,6 +11,12 @@ import com.api.seguranca.api.repository.AtaRepository;
 
 
 @RestController
+@CrossOrigin(
+    origins = {
+        "http://localhost:4200",
+        "http://172.19.0.2:4200"
+    }
+)
 @RequestMapping("/api/workshops")
 public class WorkshopController {
 

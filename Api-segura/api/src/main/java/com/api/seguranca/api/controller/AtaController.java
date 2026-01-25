@@ -20,6 +20,12 @@ import com.api.seguranca.api.dto.ColaboradorResponse;
 
 @RestController
 @RequestMapping("/api/atas")
+@CrossOrigin(
+    origins = {
+        "http://localhost:4200",
+        "http://172.19.0.2:4200"
+    }
+)
 public class AtaController {
 
     @Autowired
