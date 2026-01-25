@@ -1,0 +1,65 @@
+<div class="atas-container">
+
+  <h2 class="title">Criar Workshop</h2>
+
+  <!-- formulário -->
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Nome do Workshop"
+      [(ngModel)]="nome"
+    />
+
+    <input
+      type="date"
+      [(ngModel)]="dataRealizacao"
+    />
+  </div>
+
+  <div class="descricao-container">
+    <textarea
+      placeholder="Descrição"
+      rows="4"
+      [(ngModel)]="descricao"
+    ></textarea>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="enviar()"
+  >
+    Criar Workshop
+  </button>
+
+  <hr />
+
+  <h2 class="title">Atas dos Workshops</h2>
+
+  <!-- lista -->
+  <div class="atas-list" *ngIf="atas$ | async as atas; else loading">
+
+    <div class="ata-card" *ngFor="let ata of atas">
+      <div class="ata-header">
+        <strong>{{ ata.nomeWorkshop }}</strong>
+  
+        <span class="workshop-date">
+          {{ ata.dataWorkshop | date:'dd/MM/yyyy' }}
+        </span>
+      </div>
+  
+      <p>
+        <strong>Colaborador:</strong>
+        {{ ata.nomeColaborador }}
+      </p>
+    </div>
+  
+  </div>
+
+  
+  <ng-template #loading>
+    <p>Carregando atas...</p>
+  </ng-template>
+  
+
+</div>

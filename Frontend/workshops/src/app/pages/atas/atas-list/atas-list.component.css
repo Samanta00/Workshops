@@ -1,0 +1,94 @@
+:host {
+    display: block;
+    background-color: #eef2ff;
+    padding: 32px 0;
+  }
+.atas-container {
+    background-color: transparent;
+}
+    
+
+
+/* Container principal */
+.atas-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #f9fafb;
+  }
+  
+  /* Título */
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1f2937;
+  }
+  
+  /* Filtros */
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .filters input {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .filters input:focus {
+    border-color: #2563eb;
+  }
+  
+  /* Descrição */
+  .descricao-container {
+    margin-bottom: 16px;
+  }
+  
+  .descricao-container textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+  }
+  
+  .descricao-container textarea:focus {
+    border-color: #2563eb;
+  }
+  
+  /* Botão */
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 24px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Lista de atas */
+  .atas-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  /* Card da ata */
+  .ata-card {
+    background-color: #ffffff;
+  }  
