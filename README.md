@@ -1,6 +1,3 @@
-## Projeto feito com Angular e Java Spring Boot
-
----
 
 # Projeto Angular + Java Spring Boot
 
@@ -317,6 +314,7 @@ GET /api/atas?data=2026-01-26
 ---
 
    Seu backend estará rodando e pronto para receber requisições.
+
 
 
 
