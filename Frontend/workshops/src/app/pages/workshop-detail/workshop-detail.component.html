@@ -1,0 +1,41 @@
+<div class="workshop-detail-container" *ngIf="workshop as ws">
+
+  <button class="back-button" routerLink="/atas">
+    ← Voltar para Atas
+  </button>
+
+  <h2 class="workshop-title">
+    {{ ws.nome }}
+  </h2>
+
+  <div class="workshop-info">
+    <p>
+      <strong>Data:</strong>
+      {{ ws.dataRealizacao | date:'dd/MM/yyyy' }}
+    </p>
+
+    <p>
+      <strong>Descrição:</strong><br />
+      {{ ws.descricao }}
+    </p>
+  </div>
+
+  <div class="colaboradores" *ngIf="ws.colaboradores.length; else semColaboradores">
+    <h3>Colaboradores Presentes</h3>
+
+    <ul>
+      <li *ngFor="let col of ws.colaboradores">
+        {{ col.nome }}
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #semColaboradores>
+    <p>Nenhum colaborador registrado.</p>
+  </ng-template>
+
+</div>
+
+<div *ngIf="!workshop">
+  <p>Carregando workshop...</p>
+</div>
