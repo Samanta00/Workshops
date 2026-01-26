@@ -1,0 +1,48 @@
+/* Navbar personalizada */
+.custom-navbar {
+    background: linear-gradient(90deg, #2563eb, #3b82f6); /* gradiente azul moderno */
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .custom-navbar .navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  .custom-navbar .nav-link {
+    color: #f3f4f6;
+    margin-right: 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .custom-navbar .nav-link:hover {
+    color: #fbbf24; /* amarelo para hover */
+  }
+  
+  .custom-navbar .nav-link.active {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+  
+  .custom-navbar .btn-register {
+    margin-left: 15px;
+    background-color: #fbbf24;
+    color: #111827;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .custom-navbar .btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+  }
+  
