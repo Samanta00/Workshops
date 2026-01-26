@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ata } from '../models/ata.model';
-import { Workshop } from '../models/workshop.model';
-import { Colaborador } from '../models/colaborador.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,42 +12,23 @@ export class AtaApiService {
 
   constructor(private http: HttpClient) {}
 
-  // POST /api/workshops
-  criarWorkshop(workshop: Workshop): Observable<Workshop> {
-    return this.http.post<Workshop>(
-      `${this.API}/workshops`,
-      workshop
-    );
-  }
-
-  // POST /api/colaboradores
-  criarColaborador(colaborador: Colaborador): Observable<Colaborador> {
-    return this.http.post<Colaborador>(
-      `${this.API}/colaboradores`,
-      colaborador
-    );
-  }
-
+  // ======================
   // POST /api/atas
-  criarAta(workshopId: number): Observable<Ata> {
-    return this.http.post<Ata>(
-      `${this.API}/atas`,
-      { workshopId }
-    );
+  // ======================
+  criarAta(): Observable<Ata> {
+    return this.http.post<Ata>(`${this.API}/atas`, {});
   }
 
-  // PUT /api/workshops/{id}/atas/{id}
-  adicionarColaboradorNaAta(
-    workshopId: number,
-    colaboradorId: number
-  ): Observable<void> {
-    return this.http.put<void>(
-      `${this.API}/workshops/${workshopId}/atas/${colaboradorId}`,
-      {}
-    );
+    // services/ata.api.service.ts
+  criarAtaParaWorkshop(workshopId: number) {
+    // chama a rota GET /api/atas?workshopId=id
+    return this.http.post<{ id: number, nome?: string }>(`${this.API}/atas?workshopId=${workshopId}`, {});
   }
 
+
+  // ======================
   // DELETE /api/atas/{id}/colaboradores/{id}
+  // ======================
   removerColaboradorDaAta(
     ataId: number,
     colaboradorId: number
@@ -59,10 +38,24 @@ export class AtaApiService {
     );
   }
 
-  // GET /api/atas 
-  listarAtas() {
-    return this.http.get<any[]>(`${this.API}/atas`,);
+  // ======================
+  // GET /api/atas
+  // ======================
+  listarAtas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.API}/atas`);
   }
 
-  
+  // ======================
+  // POST /api/{workshopId}/atas/{ataId}/colaboradores/{colaboradorId}
+  // ======================
+  associarColaborador(
+    workshopId: number,
+    ataId: number,
+    colaboradorId: number
+  ): Observable<void> {
+    return this.http.post<void>(
+      `${this.API}/${workshopId}/atas/${ataId}/colaboradores/${colaboradorId}`,
+      {}
+    );
+  }
 }
