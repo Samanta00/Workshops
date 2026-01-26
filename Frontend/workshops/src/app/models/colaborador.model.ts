@@ -1,7 +1,8 @@
 export interface Colaborador {
     id: number;
     nome: string;
-}
+  }
+  
   
 //   // workshop.model.ts
 //   import { Colaborador } from './colaborador.model';
