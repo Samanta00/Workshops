@@ -1,9 +1,5 @@
 ## Projeto feito com Angular e Java Spring Boot
 
-
-
-Perfeito! Vou organizar e deixar seu texto mais claro, estruturado e fácil de seguir, sem perder nenhuma instrução. Aqui está uma versão melhorada:
-
 ---
 
 # Projeto Angular + Java Spring Boot
@@ -321,5 +317,6 @@ GET /api/atas?data=2026-01-26
 ---
 
    Seu backend estará rodando e pronto para receber requisições.
+
 
 
