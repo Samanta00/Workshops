@@ -1,0 +1,33 @@
+<div class="modal-backdrop">
+    <div class="modal-container">
+  
+      <h3>Criar Colaborador</h3>
+  
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nome do colaborador"
+        [(ngModel)]="nomeColaborador"
+      />
+  
+      <div class="actions">
+        <button
+          class="btn btn-secondary"
+          (click)="fechar()"
+          [disabled]="carregando"
+        >
+          Cancelar
+        </button>
+  
+        <button
+          class="btn btn-primary"
+          (click)="salvar()"
+          [disabled]="carregando"
+        >
+          {{ carregando ? 'Salvando...' : 'Salvar' }}
+        </button>
+      </div>
+  
+    </div>
+  </div>
+  
