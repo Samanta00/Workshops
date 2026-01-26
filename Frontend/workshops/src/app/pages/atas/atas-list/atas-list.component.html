@@ -2,6 +2,29 @@
 
   <h2 class="title">Criar Workshop</h2>
 
+  <!-- <div class="filters">
+    <input
+      type="text"
+      placeholder="Buscar por colaborador"
+      [(ngModel)]="filtroColaborador"
+      (input)="aplicarFiltros()"
+    />
+  
+    <input
+      type="text"
+      placeholder="Buscar por workshop"
+      [(ngModel)]="filtroWorkshop"
+      (input)="aplicarFiltros()"
+    />
+  
+    <input
+      type="date"
+      [(ngModel)]="filtroData"
+      (change)="aplicarFiltros()"
+    />
+  </div> -->
+  
+
   <!-- formulário -->
   <div class="filters">
     <input
@@ -25,12 +48,14 @@
   </div>
 
   <button
-    type="button"
-    class="btn btn-primary"
-    (click)="enviar()"
-  >
-    Criar Workshop
-  </button>
+  type="button"
+  class="btn btn-primary"
+  (click)="enviar()"
+>
+  Criar Workshop
+</button>
+
+
 
   <hr />
 
@@ -42,24 +67,39 @@
     <div class="ata-card" *ngFor="let ata of atas">
       <div class="ata-header">
         <strong>{{ ata.nomeWorkshop }}</strong>
-  
-        <span class="workshop-date">
-          {{ ata.dataWorkshop | date:'dd/MM/yyyy' }}
-        </span>
+        <span class="workshop-date">{{ ata.dataWorkshop | date:'dd/MM/yyyy' }}</span>
       </div>
   
       <p>
-        <strong>Colaborador:</strong>
-        {{ ata.nomeColaborador }}
+        <strong>Colaborador:</strong> {{ ata.nomeColaborador }}
+        <!-- Botão deletar -->
+        <button class="btn btn-danger btn-sm"
+        (click)="removerColaborador(ata.idColaborador)">
+          Deletar
+        </button>
+
+
       </p>
+  
     </div>
   
   </div>
+  
 
   
-  <ng-template #loading>
-    <p>Carregando atas...</p>
-  </ng-template>
+  <app-criar-colaborador-modal
+  *ngIf="mostrarModalColaborador"
+  [workshopId]="workshopIdCriado"
+  (fechado)="mostrarModalColaborador = false; carregarAtas()">
+</app-criar-colaborador-modal>
+
+<ng-template #loading>
+  <p>Carregando atas...</p>
+</ng-template>
   
+
+
+
+
 
 </div>
