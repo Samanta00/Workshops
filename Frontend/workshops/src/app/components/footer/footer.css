@@ -1,0 +1,42 @@
+.footer {
+    background-color: #1f2937; 
+    color: #f3f4f6; 
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center; 
+  }
+  
+  .footer-card {
+    background: #111827; 
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .footer-header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fbbf24; 
+  }
+  
+  .footer-body .blockquote {
+    font-style: italic;
+    color: #e5e7eb; 
+    margin: 0;
+  }
+  
+  .footer-body .blockquote-footer {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #9ca3af; 
+  }
+  

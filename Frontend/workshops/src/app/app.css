@@ -1,0 +1,13 @@
+/* Faz a página ocupar 100% da altura da janela */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* O main vai ocupar o espaço restante entre navbar e footer */
+  .main-content {
+    flex: 1; /* Isso faz o conteúdo crescer e empurrar o footer para baixo */
+    padding: 20px; /* Espaçamento interno, opcional */
+  }
+  
